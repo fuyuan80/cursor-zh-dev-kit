@@ -1,0 +1,53 @@
+---
+description: Conventional Commits：type 英文、description 中文
+globs: "**/.git/**"
+alwaysApply: false
+---
+
+# Git 提交訊息（Conventional Commits + 中文）
+
+為用戶建立或建議 Git commit message 時，遵循 [Conventional Commits](https://www.conventionalcommits.org/)：
+
+## 格式
+
+```text
+<type>[optional scope]: <中文描述>
+```
+
+- **type**：英文小寫（必填）
+- **scope**：英文，可選，表示影響模組（如 `auth`、`payment`）
+- **描述**：繁體或簡體中文（與用戶語系一致），祈使語氣，一行 ≤ 72 字
+
+## 常用 type
+
+| type | 用途 |
+|------|------|
+| feat | 新功能 |
+| fix | 修復缺陷 |
+| docs | 僅文件變更 |
+| style | 格式（不影響邏輯） |
+| refactor | 重構（非新功能、非修 bug） |
+| perf | 效能優化 |
+| test | 測試 |
+| chore | 建置、工具、雜項 |
+| ci | CI 設定 |
+| revert | 還原先前 commit |
+
+## 範例
+
+```text
+feat: 新增使用者登入功能
+fix: 修正金流回調錯誤
+docs: 更新 API 部署說明
+refactor(auth): 抽離 session 驗證邏輯
+feat!: 移除舊版登入 API（BREAKING CHANGE）
+```
+
+## 正文（可選）
+
+需要說明動機、影響範圍或破壞性變更時，空一行後寫正文；正文著重**為什麼**，不重複 diff 逐行內容。
+
+## 注意
+
+- 除非用戶明確要求，否則**不要**擅自執行 `git commit`。
+- 一次 commit 只涵蓋一個邏輯主題；多主題應建議拆分。
