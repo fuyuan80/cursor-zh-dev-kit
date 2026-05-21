@@ -16,5 +16,6 @@
     "code-review",
     "pr"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "logo": "../logo.svg"
 }
