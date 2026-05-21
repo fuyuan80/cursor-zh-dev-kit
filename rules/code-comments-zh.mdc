@@ -1,29 +1,41 @@
+﻿---
+description: 規範程式碼註解使用中文撰寫的時機與格式
+alwaysApply: true
 ---
-description: 複雜邏輯、公開 API、TODO/FIXME 使用中文註解與說明
-globs: "**/*.{ts,tsx,js,jsx,vue,py,go,rs,java,kt,cs,md}"
-alwaysApply: false
----
+# 程式碼中文註解規範
 
-# 程式碼註解與文件（中文）
+## 必須加中文註解的情況
+- **複雜邏輯**：非直覺的演算法、巢狀條件、位元運算
+- **公開 API / 函式**：參數用途、回傳值、副作用
+- **TODO / FIXME**：說明待處理原因與預期做法
+- **商業邏輯**：業務規則、特殊限制、例外處理原因
 
-在中文專案或團隊慣例下撰寫或修改程式時：
+## 不需要加註解的情況
+- 變數名稱已清楚表達用途
+- 標準 CRUD 操作
+- 簡單的 getter/setter
 
-## 必須加中文註解
+## 格式範例
 
-- **複雜邏輯**：非直觀演算法、狀態機、併發、快取、邊界條件、workaround——說明**意圖與原因**，勿複述程式字面意思。
-- **公開 API / 函數**：export 的函數、類別、模組對外介面須有**中文說明**（JSDoc、`///`、`"""` docstring 等，依語言慣例），包含參數、回傳值、可能拋出的錯誤。
-
-## TODO / FIXME
-
-- 使用 `TODO` / `FIXME` 時，**後續描述用中文**，並盡量標註負責人或 issue（若有）：
-
-```text
-// TODO: 上線前改為從環境變數讀取 timeout
-// FIXME: 併發下可能重複扣款，需加分散式鎖
+### 函式說明
+```typescript
+/**
+ * 驗證使用者的付款簽名
+ * @param payload - 來自 webhook 的原始內容
+ * @param signature - 金流服務提供的 HMAC 簽名
+ * @returns 驗證通過回傳 true，失敗拋出 Error
+ */
+function verifyPaymentSignature(payload: string, signature: string): boolean {
 ```
 
-## 命名與混用
+### 複雜邏輯
+```typescript
+// 使用指數退避策略重試，避免短時間內大量請求打垮服務
+const delay = Math.min(1000 * 2 ** retryCount, 30000);
+```
 
-- **識別符**（變數、函數、型別、檔名）維持英文，與專案既有風格一致。
-- **使用者可見字串**（UI、錯誤提示面向終端用戶）使用與產品一致的繁體或簡體。
-- 同一檔案內註解語系與專案一致，勿中英隨意切換。
+### TODO
+```typescript
+// TODO: 目前硬編碼匯率，待串接即時匯率 API（預計 Q3）
+const TWD_TO_USD = 0.031;
+```

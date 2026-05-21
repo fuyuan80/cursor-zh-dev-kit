@@ -1,10 +1,10 @@
-{
+﻿{
   "name": "zh-dev-kit",
-  "displayName": "中文開發者套件 / 中文开发者套件",
+  "displayName": "中文開發者套件",
   "version": "1.0.0",
-  "description": "面向繁體與簡體中文開發者的 Cursor 插件：溝通規範、Conventional Commits 中文提交、PR 說明與程式碼審查工作流。/ 面向繁体与简体中文开发者的 Cursor 插件：沟通规范、Conventional Commits 中文提交、PR 说明与代码审查工作流。",
+  "description": "專為繁體與簡體中文開發者的 Cursor Plugin，包含中文溝通規則、Conventional Commits、PR 說明與 Code Review 工作流。",
   "author": {
-    "name": "cursor-zh-dev-kit"
+    "name": "fuyuan80"
   },
   "keywords": [
     "chinese",
